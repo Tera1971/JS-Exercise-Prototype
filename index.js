@@ -40,9 +40,10 @@ Airplane.prototype.land = function () {
 */
 
 function Person(name, age) {
-
+this.name = name;
+this.age = age;
 }
-
+console.log(Person)
 /*
   TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
@@ -57,10 +58,20 @@ function Person(name, age) {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
+Car.prototype.fill = function(gallons) {
+  this.tank++;
 
 }
-
+Car.prototype.drive = function(distance) {
+  this.odometer++;
+  this.tank--;
+}
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -68,18 +79,25 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name, age) {
+ this.name = name;
+ this.age = age;
+ 
+}
+const person = new Baby(name, age) {
 
 }
+Person.prototype = Object.create (Baby.prototype);
+
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. the value of “this” will be the window/console Object in global scope - Window/Global Binding
+  2. What comes before the dot (.) - Implicit Binding
+  3. What makes constructor functions work - New Binding
+  4. (used to force things) Overrides a .call and .about - Explicit Binding
 */
 
 
